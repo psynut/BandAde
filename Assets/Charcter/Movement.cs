@@ -46,6 +46,8 @@ public class Movement : MonoBehaviour
             destination = transform.position + vec3 * unitOfMovement;
             //Debug.Log(gameObject.name + " moving to " + destination);
             StartCoroutine("Lerp");
+        } else if(moving == false && vec3 != Vector3.zero && isObstructed(vec3)){
+            RotateModel(vec3);
         }
     }
 
