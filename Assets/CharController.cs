@@ -33,6 +33,7 @@ public class CharController : MonoBehaviour
         StartCoroutine("CheckControls");
         characters = new Movement[] {adam,ariana,cole,river};
         moveCommand.AddListener(characters[(int)activeCharacter].LerpMovement);
+        changedActiveCharacter.Invoke(activeCharacter);
     }
 
     // Update is called once per frame
