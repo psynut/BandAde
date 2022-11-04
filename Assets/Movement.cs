@@ -38,13 +38,13 @@ public class Movement : MonoBehaviour
 
     public void LerpMovement(Vector3 vec3) {
         Debug.Log("Runing LerpMovement");
-        if(moving == false && vec3 != Vector3.zero) {
+        if(moving == false && vec3 != Vector3.zero && !isObstructed(vec3)) {
             moving = true;
             RotateModel(vec3);
             lerpStartPosition = transform.position;
             elapsedTime = 0f;
             destination = transform.position + vec3 * unitOfMovement;
-            Debug.Log(gameObject.name + " moving to " + destination);
+            //Debug.Log(gameObject.name + " moving to " + destination);
             StartCoroutine("Lerp");
         }
     }
@@ -53,6 +53,19 @@ public class Movement : MonoBehaviour
         Vector3[] vectorDirections = { Vector3.left,Vector3.forward,Vector3.right,Vector3.down,Vector3.left };
         int result = System.Array.IndexOf(vectorDirections,vec3);
             characterModel.localRotation = Quaternion.Euler(0,characterForward + ((result-1)*90),0);
+    }
+
+    private bool isObstructed(Vector3 vec3) {
+        bool m_bool = false;
+        RaycastHit hit;
+        Physics.Raycast(transform.position,vec3,out hit,unitOfMovement);
+        //if(hit.transform.GetComponent<Obstacle>()==true) {
+        //    m_bool = !m_bool;
+        //}
+        if(hit.transform) {
+            m_bool = hit.transform.gameObject.GetComponent<Obstacle>();
+        }
+        return m_bool;
     }
 
     IEnumerator Lerp() {
@@ -64,7 +77,7 @@ public class Movement : MonoBehaviour
         } else {
             moving = false;
             transform.position = destination;
-            Debug.Log(gameObject.name + " moved to " + destination);
+            //Debug.Log(gameObject.name + " moved to " + destination);
         }
     }
 }
