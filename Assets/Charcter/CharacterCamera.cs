@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterCamera : MonoBehaviour
 {
-    public CharController.CharacterNames followCharacter;
+    private CharController.CharacterNames followCharacter;
 
     private AudioListener audioListener;
     private Camera camera;
