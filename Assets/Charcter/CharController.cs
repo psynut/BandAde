@@ -25,6 +25,8 @@ public class CharController : MonoBehaviour
     public class CharacterEvent : UnityEvent<CharacterNames> {}
     public CharacterEvent changedActiveCharacter;
 
+    public UnityEvent usedPower;
+
     private Movement[] characters;
     private Vector3 controllerVector3 = Vector3.zero;
 
@@ -33,6 +35,7 @@ public class CharController : MonoBehaviour
         StartCoroutine("CheckControls");
         characters = new Movement[] {adam,ariana,cole,river};
         moveCommand.AddListener(characters[(int)activeCharacter].LerpMovement);
+        usedPower.AddListener(characters[(int)activeCharacter].GetComponent<HasPower>().UsePower);
         changedActiveCharacter.Invoke(activeCharacter);
     }
 
@@ -71,11 +74,17 @@ public class CharController : MonoBehaviour
         moveCommand.Invoke(vec3);     
     }
 
+    public void UsePowers() {
+        usedPower.Invoke();
+    }
+
     private void ChangeActiveCharacter(CharacterNames m_character) {
         moveCommand.RemoveAllListeners();
+        usedPower.RemoveAllListeners();
         activeCharacter = m_character;
         changedActiveCharacter.Invoke(m_character);
         moveCommand.AddListener(characters[(int)m_character].LerpMovement);
+        usedPower.AddListener(characters[(int)m_character].GetComponent<HasPower>().UsePower);
     }
 
     public void ChangeActiveCharacter(InputAction.CallbackContext context) {

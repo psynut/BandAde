@@ -7,6 +7,6 @@ public class Obstacle : MonoBehaviour
     private bool passable = false;
 
     public void ClearObstacle() {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }

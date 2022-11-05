@@ -795,6 +795,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  usedPower:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1578644820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +903,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 57e926d2-6459-440e-8d39-41bf514a3398
     m_ActionName: CharacterControl/Activate River[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1578644819}
+        m_TargetAssemblyTypeName: CharController, Assembly-CSharp
+        m_MethodName: UsePowers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 52be4366-5a81-4450-871b-6464d428432a
+    m_ActionName: CharacterControl/Use Power[/Keyboard/e,/Keyboard/slash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CharacterControl

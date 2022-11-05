@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
     }
 
     public void LerpMovement(Vector3 vec3) {
-        Debug.Log("Runing LerpMovement");
+        Debug.Log("Running LerpMovement");
         if(moving == false && vec3 != Vector3.zero && !isObstructed(vec3)) {
             moving = true;
             RotateModel(vec3);
