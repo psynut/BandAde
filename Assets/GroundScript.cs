@@ -13,7 +13,7 @@ public class GroundScript : MonoBehaviour
         groundBlock.transform.name = "Ground Block";
         Debug.Log(groundBlock.name);
         groundBlock.transform.parent = groundCollection;
-        this.gameObject.active = false;
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
