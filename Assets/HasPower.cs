@@ -5,7 +5,7 @@ using UnityEngine;
 public class HasPower : MonoBehaviour
 {
 
-    public Powers power;
+    private Powers.power power;
 
     private Movement movement;
     private Transform characterModel;
@@ -13,16 +13,35 @@ public class HasPower : MonoBehaviour
     void Start() {
         movement = GetComponent<Movement>();
         characterModel = movement.characterModel;
+        GivePowers();
+    }
+
+    private void GivePowers() {
+        switch(name) {
+            case "Adam":
+                power = Powers.power.Earth;
+                break;
+            case "Ariana":
+                power = Powers.power.Air;
+                break;
+            case "Cole":
+                power = Powers.power.Fire;
+                break;
+            case "River":
+                power = Powers.power.Water;
+                break;
+            default:
+                Debug.LogWarning("Character name does not match known character in " + name + "HasPower.GivePowers()");
+                break;
+        }
     }
 
     public void UsePower() {
         float characterRotationX = characterModel.rotation.eulerAngles.y;
         RaycastHit hit;
         Physics.Raycast(transform.position,Quaternion.Euler(0,characterRotationX - movement.characterForward,0)*Vector3.forward,out hit,movement.unitOfMovement);
-        if(hit.transform) {
-            Obstacle obstacle = hit.transform.gameObject.GetComponent<Obstacle>();
-            Debug.Log("Will need to use this to transform " + obstacle.name);
+        if(hit.transform.gameObject.GetComponent<AcceptCharacterPower>()) {
+            hit.transform.gameObject.GetComponent<AcceptCharacterPower>().AcceptPower(power);
         }
     }
-
 }

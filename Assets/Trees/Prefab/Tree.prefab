@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7149100468771953440}
   - component: {fileID: 7149100468771953439}
   - component: {fileID: 7149100468771953438}
-  - component: {fileID: 7149100468771953437}
+  - component: {fileID: 5117248003062798580}
   - component: {fileID: 3072448899003490784}
+  - component: {fileID: 7149100468771953437}
   - component: {fileID: 1332540471887455051}
   m_Layer: 0
   m_Name: Tree
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada8fedd887f3fe42a1c61fb8a9be0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7149100468771953437
+--- !u!114 &5117248003062798580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,17 +72,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7149100468771953436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4237d2dcf4e27594692c23e906b6d073, type: 3}
+  m_Script: {fileID: 11500000, guid: dd3e3d57e52e919429be196b177476de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trunks:
-  - {fileID: 4263382929819302744, guid: b724ca76fa928714ca6ad4af860cde2b, type: 3}
-  - {fileID: 6366770797675812341, guid: 2517c18f09377bd46bd8617bd5be359e, type: 3}
-  foliage:
-  - {fileID: 96699074007790916, guid: 1819052ab0d0b444bb2db9cabb83d971, type: 3}
-  - {fileID: 226110708038941594, guid: 0bc69605676b6e241993cdf50a536484, type: 3}
-  transforms: []
-  alive: 1
 --- !u!199 &3072448899003490784
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -154,6 +147,26 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7149100468771953437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149100468771953436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4237d2dcf4e27594692c23e906b6d073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trunks:
+  - {fileID: 4263382929819302744, guid: b724ca76fa928714ca6ad4af860cde2b, type: 3}
+  - {fileID: 6366770797675812341, guid: 2517c18f09377bd46bd8617bd5be359e, type: 3}
+  foliage:
+  - {fileID: 96699074007790916, guid: 1819052ab0d0b444bb2db9cabb83d971, type: 3}
+  - {fileID: 226110708038941594, guid: 0bc69605676b6e241993cdf50a536484, type: 3}
+  transforms: []
+  alive: 1
 --- !u!198 &1332540471887455051
 ParticleSystem:
   m_ObjectHideFlags: 0

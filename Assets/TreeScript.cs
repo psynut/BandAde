@@ -41,4 +41,17 @@ public class TreeScript : MonoBehaviour
     {
         
     }
+
+    public void CharacterPowered(Powers.power powerUsed) {
+        if(!alive && powerUsed == Powers.power.Fire) {
+            CatchFire();
+        } else if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)){
+            Destroy(gameObject);
+        }
+            
+    }
+
+    private void CatchFire() {
+        particleSystem.Play();
+    }
 }
