@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3072448899003490784}
   - component: {fileID: 7149100468771953437}
   - component: {fileID: 1332540471887455051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +167,8 @@ MonoBehaviour:
   - {fileID: 226110708038941594, guid: 0bc69605676b6e241993cdf50a536484, type: 3}
   transforms: []
   alive: 1
+  flameSpreadDelay: 0
+  onFire: 0
 --- !u!198 &1332540471887455051
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4883,7 +4885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7149100469239070045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foliage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

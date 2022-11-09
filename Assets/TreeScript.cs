@@ -7,14 +7,15 @@ public class TreeScript : MonoBehaviour
     public GameObject[] trunks;
     public GameObject[] foliage;
     public Transform[] transforms; //0. Tree Transform; 1. Foliage Transform
+    public bool alive = true;
+    public float flameSpreadDelay;
 
     private TreeScript[] deadTreeNieghbors;
 
-    public bool alive = true;
 
     [HideInInspector]
     public bool onFire = false;
-    private ParticleSystem particleSystem;
+    private ParticleSystem m_particleSystem;
 
     private void OnDrawGizmos() {
         if(alive) {
@@ -40,7 +41,7 @@ public class TreeScript : MonoBehaviour
         } else {
             deadTreeNieghbors = FindNeighborDeadTrees();
         }
-        particleSystem = GetComponent<ParticleSystem>();
+        m_particleSystem = GetComponent<ParticleSystem>();
         
     }
 
@@ -61,7 +62,12 @@ public class TreeScript : MonoBehaviour
 
     public void CatchFire() {
         onFire = true;
-        particleSystem.Play();
+        m_particleSystem.Play();
+        StartCoroutine("SpreadFire");
+    }
+
+    private IEnumerator SpreadFire() {
+        yield return new WaitForSeconds(flameSpreadDelay);
         foreach(TreeScript treeScript in deadTreeNieghbors) {
             if(treeScript.onFire == false) {
                 treeScript.CatchFire();
@@ -75,22 +81,24 @@ public class TreeScript : MonoBehaviour
             Debug.LogWarning("No boxcollider found in this Tree gameojbect at: " + gameObject.transform.position);
         }
         //Ideally trees are cube or squares -- trying to make this more idiot proof.
-        float[] treeSizes = {boxCollider.size.z * transform.lossyScale.z, boxCollider.size.x * transform.lossyScale.x };
-        if(treeSizes[0] != treeSizes[1]) {
-            Debug.LogWarning("Tree size is not uniform on x & z axis - using x axis scale.");
+        float[] treeSizes = { boxCollider.size.z * transform.lossyScale.z,boxCollider.size.x * transform.lossyScale.x };
+        foreach(float size in treeSizes) {
+            Debug.Log(size);
         }
 
         Vector3[] cardinalDirection = { Vector3.forward,Vector3.right,Vector3.back,Vector3.left };
-        List<TreeScript> trees = new List<TreeScript>();
+        List<TreeScript> deadTrees = new List<TreeScript>();
+        LayerMask layerMask = LayerMask.GetMask("Trees");
         for(int i = 0; i < cardinalDirection.Length; i++) {
-            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit, treeSizes[i % 2]);
+            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit, 3f/*treeSizes[i % 2]*/, layerMask.value);
             if(hit.transform) {
+                Debug.Log(hit.transform.name);
                 TreeScript m_treeScript = hit.transform.GetComponent<TreeScript>();
                 if(m_treeScript != null && hit.transform.GetComponent<TreeScript>().alive == false) {
-                    trees.Add(hit.transform.GetComponent<TreeScript>());
+                    deadTrees.Add(hit.transform.GetComponent<TreeScript>());
                 }
             }
         }
-        return trees.ToArray();
+        return deadTrees.ToArray();
     }
 }

@@ -11,7 +11,6 @@ public class GroundScript : MonoBehaviour
     void Start() {
         GameObject groundBlock = GameObject.Instantiate(groundBlocks[Random.Range(0,groundBlocks.Length)],transform.position,Quaternion.Euler(-90,0,0),this.transform);
         groundBlock.transform.name = "Ground Block";
-        Debug.Log(groundBlock.name);
         groundBlock.transform.parent = groundCollection;
         this.gameObject.SetActive(false);
     }
