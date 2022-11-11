@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
     private bool isObstructed(Vector3 vec3) {
         bool m_bool = false;
         RaycastHit hit;
-        Physics.Raycast(transform.position,vec3,out hit,unitOfMovement);
+        Physics.Raycast(transform.position,vec3,out hit,unitOfMovement+.01f);
         //if(hit.transform.GetComponent<Obstacle>()==true) {
         //    m_bool = !m_bool;
         //}

@@ -83,16 +83,14 @@ public class TreeScript : MonoBehaviour
         //Ideally trees are cube or squares -- trying to make this more idiot proof.
         float[] treeSizes = { boxCollider.size.z * transform.lossyScale.z,boxCollider.size.x * transform.lossyScale.x };
         foreach(float size in treeSizes) {
-            Debug.Log(size);
         }
 
         Vector3[] cardinalDirection = { Vector3.forward,Vector3.right,Vector3.back,Vector3.left };
         List<TreeScript> deadTrees = new List<TreeScript>();
         LayerMask layerMask = LayerMask.GetMask("Trees");
         for(int i = 0; i < cardinalDirection.Length; i++) {
-            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit, 3f/*treeSizes[i % 2]*/, layerMask.value);
+            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit, treeSizes[i % 2], layerMask.value);
             if(hit.transform) {
-                Debug.Log(hit.transform.name);
                 TreeScript m_treeScript = hit.transform.GetComponent<TreeScript>();
                 if(m_treeScript != null && hit.transform.GetComponent<TreeScript>().alive == false) {
                     deadTrees.Add(hit.transform.GetComponent<TreeScript>());
