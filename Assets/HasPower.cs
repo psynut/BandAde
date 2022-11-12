@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HasPower : MonoBehaviour
 {
-
-    private Powers.power power;
+    [HideInInspector]
+    public Powers.power power;
 
     private Movement movement;
     private Transform characterModel;

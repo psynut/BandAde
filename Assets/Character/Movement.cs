@@ -61,12 +61,16 @@ public class Movement : MonoBehaviour
         LayerMask layerMask = LayerMask.NameToLayer("Landform") | LayerMask.NameToLayer("Trees");
         RaycastHit hit;
         Physics.Raycast(transform.position+Vector3.up,vec3,out hit,unitOfMovement+.01f, layerMask.value);
-        //if(hit.transform.GetComponent<Obstacle>()==true) {
-        //    m_bool = !m_bool;
-        //}
         if(hit.transform) {
             m_bool = hit.transform.gameObject.GetComponent<Obstacle>();
             Debug.Log(hit.transform.name);
+            if(hit.transform.GetComponent<Landform>() != null) {
+                if(hit.transform.GetComponent<Landform>().myLandFormType == Landform.LandFormType.Ditch && GetComponent<HasPower>().power == Powers.power.Air) {
+                    m_bool = false;
+                } else if(hit.transform.GetComponent<Landform>().myLandFormType == Landform.LandFormType.River && GetComponent<HasPower>().power == Powers.power.Water) {
+                    m_bool = false;
+                }
+            }
         }
         return m_bool;
     }
