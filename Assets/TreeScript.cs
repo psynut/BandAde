@@ -6,6 +6,7 @@ public class TreeScript : MonoBehaviour
 {
     public GameObject[] trunks;
     public GameObject[] foliage;
+    public Material[] foliageMaterials;
     public Transform[] transforms; //0. Tree Transform; 1. Foliage Transform
     public bool alive = true;
     public float flameSpreadDelay;
@@ -41,6 +42,7 @@ public class TreeScript : MonoBehaviour
         if(alive) {
             GameObject leaves = GameObject.Instantiate(foliage[Random.Range(0,trunks.Length)],transforms[1].position + new Vector3(randNumberX,0,randNumberZ),Quaternion.Euler(-90,0,0),transforms[1]);
             leaves.transform.name = "Foliage";
+            leaves.GetComponent<MeshRenderer>().material = foliageMaterials[Random.Range(0,foliageMaterials.Length)];
         } else {
             deadTreeNieghbors = FindNeighborDeadTrees();
         }
