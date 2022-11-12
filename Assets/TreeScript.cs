@@ -9,6 +9,7 @@ public class TreeScript : MonoBehaviour
     public Transform[] transforms; //0. Tree Transform; 1. Foliage Transform
     public bool alive = true;
     public float flameSpreadDelay;
+    public float randomPlacementThreshold;
 
     private TreeScript[] deadTreeNieghbors;
 
@@ -33,10 +34,12 @@ public class TreeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject trunk = GameObject.Instantiate(trunks[Random.Range(0,trunks.Length)], transform.position, Quaternion.Euler(-90, 0 , 0), this.transform);
+        float randNumberX = Random.Range(0f,randomPlacementThreshold)-(randomPlacementThreshold/2);
+        float randNumberZ = Random.Range(0f,randomPlacementThreshold) - (randomPlacementThreshold / 2);
+        GameObject trunk = GameObject.Instantiate(trunks[Random.Range(0,trunks.Length)], transform.position+new Vector3(randNumberX,0,randNumberZ), Quaternion.Euler(-90, 0 , 0), this.transform);
         trunk.transform.name = "Trunk";
         if(alive) {
-            GameObject leaves = GameObject.Instantiate(foliage[Random.Range(0,trunks.Length)],transforms[1].position,Quaternion.Euler(-90,0,0),transforms[1]);
+            GameObject leaves = GameObject.Instantiate(foliage[Random.Range(0,trunks.Length)],transforms[1].position + new Vector3(randNumberX,0,randNumberZ),Quaternion.Euler(-90,0,0),transforms[1]);
             leaves.transform.name = "Foliage";
         } else {
             deadTreeNieghbors = FindNeighborDeadTrees();

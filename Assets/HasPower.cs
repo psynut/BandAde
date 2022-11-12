@@ -12,7 +12,7 @@ public class HasPower : MonoBehaviour
 
     void Start() {
         movement = GetComponent<Movement>();
-        characterModel = movement.characterModel;
+        characterModel = movement.characterNest;
         GivePowers();
     }
 
@@ -37,12 +37,14 @@ public class HasPower : MonoBehaviour
     }
 
     public void UsePower() {
+        Debug.Log("Using Power " + power.ToString());
         float characterRotationX = characterModel.rotation.eulerAngles.y;
         RaycastHit hit;
         Physics.Raycast(transform.position+new Vector3(0,2,0),Quaternion.Euler(0,characterRotationX - movement.characterForward,0)*Vector3.forward,out hit,movement.unitOfMovement);
         if(hit.collider) {
             if(hit.transform.gameObject.GetComponent<AcceptCharacterPower>()) {
                 hit.transform.gameObject.GetComponent<AcceptCharacterPower>().AcceptPower(power);
+                Debug.Log(hit.transform + " sent acceptpower");
             }
         }
     }
