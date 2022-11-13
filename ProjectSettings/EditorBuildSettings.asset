@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/SleepyTimeSplash.unity
+    guid: 6e752959f3c2eda4b816797da5f36881
+  - enabled: 1
     path: Assets/_Scenes/Scene 00.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_Scenes/Stage.unity
+    guid: b72f718ad42520840863d03f5458da40
   m_configObjects: {}
