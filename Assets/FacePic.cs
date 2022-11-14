@@ -22,7 +22,7 @@ public class FacePic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharacterSpeaks(0,20);
+
     }
 
     // Update is called once per frame
@@ -33,12 +33,10 @@ public class FacePic : MonoBehaviour
 
     public void CharacterSpeaks(int character, float seconds) {
         startTime = Time.time;
-        StartCoroutine(SwitchOutFace(character,seconds,0));
+        StartCoroutine(AnimatePictures(character,seconds,0));
     }
 
-    IEnumerator SwitchOutFace(int character, float seconds, int sequence) {
-        Debug.Log(sequence);
-        Debug.Log("running SwitchOutFace");
+    IEnumerator AnimatePictures(int character, float seconds, int sequence) {
         image.sprite = characterImages[character].sprites[sequence];
         sequence++;
         yield return new WaitForSeconds(.1f);
@@ -48,7 +46,7 @@ public class FacePic : MonoBehaviour
             if(sequence == characterImages[character].sprites.Length) {
                 sequence = 0;
             }
-            StartCoroutine(SwitchOutFace(character,seconds,sequence));
+            StartCoroutine(AnimatePictures(character,seconds,sequence));
         }
     }
 }
