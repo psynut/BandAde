@@ -32,7 +32,7 @@ The coffee house is to the north (top) of the map.
 
 There will be trees, bushes, and grass land,
 There will be rocks, and sidewalks, maybe layered land.
-There will be obstacles of rivers (~~maybe created because river used water power~~), downed trees (~~maybe because Adam or ~~Ariana used the power of ~~Earth or~~ Air).
+There will be obstacles of rivers (~~maybe created because river used water power~~), downed trees (~~maybe because Adam or~~ Ariana used the power of ~~Earth or~~ Air).
 ~~Downed power lines will also start fires~~
 
 ## Gameplay
