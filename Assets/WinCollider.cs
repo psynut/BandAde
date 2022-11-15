@@ -9,8 +9,9 @@ public class WinCollider : MonoBehaviour {
 
 
     private void Awake() {
-        
+            
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,11 @@ public class WinCollider : MonoBehaviour {
         
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if(collision.transform.name != null) {
-            levelComplete.Invoke(collision.transform.name);
+    private void OnTriggerEnter(Collider m_collider) {
+        Debug.Log("Collision");
+        if(m_collider.transform.name != null) {
+            levelComplete.Invoke(m_collider.transform.name);
+            Debug.Log("collision with " + m_collider.transform.name);
         }
     }
 }

@@ -17,8 +17,8 @@ public class LevelUI : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        StartEndSequence("Ariana");
-        Debug.Log(tMPtext);
+        facePic.image.enabled = false;
+        tMPtext.enabled = false;
     }
 
     // Update is called once per frame
@@ -38,6 +38,8 @@ public class LevelUI : MonoBehaviour {
     }
 
     public void StartEndSequence(string characterName) {
+        facePic.image.enabled = true;
+        tMPtext.enabled = true;
         StartCoroutine(EndSequence01(characterName));
     }
 
@@ -67,7 +69,6 @@ public class LevelUI : MonoBehaviour {
         advance = false;
         facePic.StopAllCoroutines();
         StartCoroutine(EndSequence02());
-        Debug.Log("Advancing Story"); //Where to add next coroutine
     }
     IEnumerator EndSequence02() {
         facePic.CharacterSpeaks(3,6f);
@@ -78,7 +79,6 @@ public class LevelUI : MonoBehaviour {
         advance = false;
         facePic.StopAllCoroutines();
         StartCoroutine(EndSequence03());
-        Debug.Log("Advancing Story"); //Where to add next coroutine
     }
     IEnumerator EndSequence03() {
         facePic.CharacterSpeaks(0,5f);
@@ -89,7 +89,6 @@ public class LevelUI : MonoBehaviour {
         advance = false;
         facePic.StopAllCoroutines();
         StartCoroutine(EndSequence04());
-        Debug.Log("Advancing Story"); //Where to add next coroutine
     }
     IEnumerator EndSequence04() {
         facePic.CharacterSpeaks(2,5f);
@@ -100,17 +99,16 @@ public class LevelUI : MonoBehaviour {
         advance = false;
         facePic.StopAllCoroutines();
         StartCoroutine(EndSequence05());
-        Debug.Log("Advancing Story"); //Where to add next coroutine
     }
     IEnumerator EndSequence05() {
         facePic.CharacterSpeaks(1,5f);
-        tMPtext.text = ("This little coffee house brings back memories! Our first big gig, was amazing. Now we get to return the favor by saving this little underdog local business from going under.");
+        tMPtext.text = ("This little coffee house brings back memories! Our first big gig here was amazing. Now we get to return the favor by saving this little underdog local business from going under.");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
         advance = false;
         facePic.StopAllCoroutines();
-        Debug.Log("Advancing Story"); //Where to add next coroutine
+        FindObjectOfType<SceneLoader>().LoadNextScene();
     }
 }
 

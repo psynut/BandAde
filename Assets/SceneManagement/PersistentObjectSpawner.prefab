@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentObjectPrefabs:
   - {fileID: 3188734388605864153, guid: 4bfe2e0ed21c1af48abfda752fd890e2, type: 3}
+  - {fileID: 5512003610489682774, guid: b60fdc8eedcd8314d81571f83b9bce17, type: 3}

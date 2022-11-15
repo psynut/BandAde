@@ -11,8 +11,8 @@ public class FacePic : MonoBehaviour
     }
 
     public CharacterSprites[] characterImages;
-
-    private Image image;
+    [HideInInspector]
+    public Image image;
     private float startTime;
 
     private void Awake() {
