@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HasPower : MonoBehaviour
 {
     [HideInInspector]
     public Powers.power power;
+    public UnityEvent usedPower;
 
     private Movement movement;
     private Transform characterModel;
@@ -44,7 +46,7 @@ public class HasPower : MonoBehaviour
         if(hit.collider) {
             if(hit.transform.gameObject.GetComponent<AcceptCharacterPower>()) {
                 hit.transform.gameObject.GetComponent<AcceptCharacterPower>().AcceptPower(power);
-                Debug.Log(hit.transform + " sent acceptpower");
+                usedPower.Invoke();
             }
         }
     }
