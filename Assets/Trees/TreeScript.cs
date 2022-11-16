@@ -6,6 +6,7 @@ public class TreeScript : MonoBehaviour
 {
     public GameObject[] trunks;
     public GameObject[] foliage;
+    public GameObject downedTree;
     public Material[] foliageMaterials;
     public Transform[] transforms; //0. Tree Transform; 1. Foliage Transform
     public bool alive = true;
@@ -59,7 +60,10 @@ public class TreeScript : MonoBehaviour
     public void CharacterPowered(Powers.power powerUsed) {
         if(!alive && powerUsed == Powers.power.Fire) {
             CatchFire();
-        } else if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)){
+        } else if(!alive && powerUsed == Powers.power.Air) {
+            Debug.Log("CharacterPowered recognized to invoke KnockedDown()");
+            KnockOver();
+        } else if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)) {
             Destroy(gameObject);
         }
             
@@ -78,6 +82,20 @@ public class TreeScript : MonoBehaviour
                 treeScript.CatchFire();
             }
         }
+    }
+
+    public void KnockOver() {
+        Landform[] rivers = FindNeighborRiver();
+        for(int i=0; i<rivers.Length; i++) {
+            if(rivers[i] != null){
+                GameObject deadTreePrefab = GameObject.Instantiate(downedTree,rivers[i].transform.position,Quaternion.Euler(0,90f * i,0),rivers[i].transform);
+                deadTreePrefab.name = "Downed Tree Bridge";
+                Debug.Log("Placing downed tree @ " + deadTreePrefab + " Parent is at " + deadTreePrefab.transform.parent.position);
+                Destroy(rivers[i].GetComponent<Obstacle>());
+                Destroy(rivers[i].GetComponent<Landform>()); //less sure if this is needed or problematic.
+            }
+        }
+        Destroy(gameObject);
     }
 
     private TreeScript[] FindNeighborDeadTrees() {
@@ -103,5 +121,31 @@ public class TreeScript : MonoBehaviour
             }
         }
         return deadTrees.ToArray();
+    }
+
+    private Landform[] FindNeighborRiver() {
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if(boxCollider == null) {
+            Debug.LogWarning("No boxcollider found in this Tree gameojbect at: " + gameObject.transform.position);
+        }
+        //Ideally trees are cube or squares -- trying to make this more idiot proof.
+        float[] treeSizes = { boxCollider.size.z * transform.lossyScale.z,boxCollider.size.x * transform.lossyScale.x };
+        foreach(float size in treeSizes) {
+        }
+        Vector3[] cardinalDirection = { Vector3.forward,Vector3.right,Vector3.back,Vector3.left };
+        Landform[] rivers = new Landform[4];
+        LayerMask layerMask = LayerMask.GetMask("Landforms");
+        for(int i = 0; i < cardinalDirection.Length; i++) {
+            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit,treeSizes[i % 2]+1,layerMask.value);
+            if(hit.transform) {
+                Landform m_landform= hit.transform.GetComponent<Landform>();
+                Debug.Log("Raycast hit landform @ " + transform.position);
+                if(m_landform != null && hit.transform.GetComponent<Landform>().myLandFormType == Landform.LandFormType.River) {
+                   rivers[i] = hit.transform.GetComponent<Landform>();
+                    Debug.Log("Raycast hit river @ " + transform.position);
+                }
+            }
+        }
+        return rivers;
     }
 }

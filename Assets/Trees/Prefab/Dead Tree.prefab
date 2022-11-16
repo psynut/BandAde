@@ -165,9 +165,12 @@ MonoBehaviour:
   foliage:
   - {fileID: 96699074007790916, guid: 1819052ab0d0b444bb2db9cabb83d971, type: 3}
   - {fileID: 226110708038941594, guid: 0bc69605676b6e241993cdf50a536484, type: 3}
+  downedTree: {fileID: 1413777355175841161, guid: 66df60eae404c80498ff48e100f4a23e, type: 3}
+  foliageMaterials: []
   transforms: []
   alive: 0
   flameSpreadDelay: 0.15
+  randomPlacementThreshold: 0
   onFire: 0
 --- !u!198 &1332540471887455051
 ParticleSystem:
