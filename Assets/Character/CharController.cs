@@ -6,6 +6,9 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 
+//To get the characters to move in a chain...
+//All the characters are listed in the movement values
+//May have to use this to keep track of where the other three go in the MoveCharacter
 public class CharController : MonoBehaviour
 {
     public Movement adam, ariana, cole, river;
