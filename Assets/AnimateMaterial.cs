@@ -29,11 +29,9 @@ public class AnimateMaterial : MonoBehaviour {
         } else {
             increment -= 1f;
         }
-        Debug.Log(increment);
         if(increment < 0  || increment > period) {
             forwardBack = !forwardBack;
         }
-        Debug.Log("MoveMaterial incriment " + uvScale);
         material.SetTextureOffset(textureName,uvScale);
         yield return new WaitForSeconds(.1f);
         StartCoroutine(MoveMaterial());

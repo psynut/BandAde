@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CharacterCamera : MonoBehaviour
 {
-    private CharController.CharacterNames followCharacter;
+    private Characters.Names followCharacter;
 
     private AudioListener audioListener;
-    private Camera camera;
+    //private Camera camera;
 
     private void Awake() {
-        followCharacter = (CharController.CharacterNames)System.Enum.Parse(typeof(CharController.CharacterNames),(transform.parent.name));
+        followCharacter = (Characters.Names)System.Enum.Parse(typeof(Characters.Names),(transform.parent.name));
         audioListener = GetComponent<AudioListener>();
-        camera = GetComponent<Camera>();
+        //camera = GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
@@ -28,11 +28,11 @@ public class CharacterCamera : MonoBehaviour
     }
 
     private void CameraSwitch(bool onOff) {
-        camera.enabled = onOff;
+        GetComponent<Camera>().enabled = onOff;
         audioListener.enabled = onOff;
     }
 
-    public void ChangeActiveCamera(CharController.CharacterNames m_character) {
+    public void ChangeActiveCamera(Characters.Names m_character) {
         CameraSwitch(followCharacter == m_character);
     }
 }

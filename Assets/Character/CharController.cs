@@ -12,20 +12,15 @@ using UnityEngine.UI;
 public class CharController : MonoBehaviour
 {
     public Movement adam, ariana, cole, river;
-    public enum CharacterNames {
-        Adam,
-        Ariana,
-        Cole,
-        River
-    }
-    public CharacterNames activeCharacter = CharacterNames.Adam;
+
+    public Characters.Names activeCharacter = Characters.Names.Adam;
 
     [System.Serializable]
     public class Vector3Event : UnityEvent<Vector3> {}
     public Vector3Event moveCommand;
 
     [System.Serializable]
-    public class CharacterEvent : UnityEvent<CharacterNames> {}
+    public class CharacterEvent : UnityEvent<Characters.Names> {}
     public CharacterEvent changedActiveCharacter;
 
     public UnityEvent usedPower;
@@ -48,6 +43,8 @@ public class CharController : MonoBehaviour
         
     }
 
+
+    //Gets invoked by Character Controlls Input
     public void InputDirection(InputAction.CallbackContext context) {
         controllerVector3 = Vector3.zero;
         float xAxis = context.ReadValue<Vector2>().x;
@@ -81,7 +78,7 @@ public class CharController : MonoBehaviour
         usedPower.Invoke();
     }
 
-    private void ChangeActiveCharacter(CharacterNames m_character) {
+    private void ChangeActiveCharacter(Characters.Names m_character) {
         moveCommand.RemoveAllListeners();
         usedPower.RemoveAllListeners();
         activeCharacter = m_character;
@@ -91,6 +88,6 @@ public class CharController : MonoBehaviour
     }
 
     public void ChangeActiveCharacter(InputAction.CallbackContext context) {
-        ChangeActiveCharacter((CharacterNames)System.Enum.Parse(typeof(CharacterNames),context.action.name.Substring(9)));
+        ChangeActiveCharacter((Characters.Names)System.Enum.Parse(typeof(Characters.Names),context.action.name.Substring(9)));
     }
 }

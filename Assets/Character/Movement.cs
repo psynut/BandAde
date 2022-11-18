@@ -13,10 +13,13 @@ public class Movement : MonoBehaviour
     [Tooltip("What is the angle of the model's transform so that forward is facing the correct direction")]
     public float characterForward;
 
+    [HideInInspector]
+    public bool moving = false;
+
     private Vector3 lerpStartPosition;
     private Vector3 destination;
     private float elapsedTime;
-    private bool moving = false;
+
 
     private Animator animator;
 
@@ -58,7 +61,7 @@ public class Movement : MonoBehaviour
             characterNest.localRotation = Quaternion.Euler(0,characterForward + ((result-1)*90),0);
     }
 
-    private bool isObstructed(Vector3 vec3) {
+    public bool isObstructed(Vector3 vec3) {
         bool m_bool = false;
         LayerMask layerMask = LayerMask.NameToLayer("Landform") | LayerMask.NameToLayer("Trees");
         RaycastHit hit;
