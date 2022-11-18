@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void RotateModel(Vector3 vec3) {
+    public void RotateModel(Vector3 vec3) {
         Vector3[] vectorDirections = { Vector3.left,Vector3.forward,Vector3.right,Vector3.down,Vector3.left };
         int result = System.Array.IndexOf(vectorDirections,vec3);
             characterNest.localRotation = Quaternion.Euler(0,characterForward + ((result-1)*90),0);
