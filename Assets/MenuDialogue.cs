@@ -61,7 +61,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence03() {
         facePic.CharacterSpeaks(2,7f);
-        tMPtext.text = ("Ariela and I stopped by Little Guy Coffee House today. \nThe banks shutting it down! We gotta do something!");
+        tMPtext.text = ("Ariela and I stopped by Little Guy Coffee House today. \nThe bank's shutting it down! We gotta do something!");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
@@ -83,7 +83,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence05() {
         facePic.CharacterSpeaks(1,6f);
-        tMPtext.text = ("I know Little Guy's where we got are first big break! \nIt's like the last corner for REAL people around here!");
+        tMPtext.text = ("I know! Little Guy's where we got our first big break! \nIt's like the last corner for REAL people around here!");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
@@ -127,7 +127,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence10() {
         facePic.CharacterSpeaks(2,6f);
-        tMPtext.text = ("That's hot idea, Ariela");
+        tMPtext.text = ("That's a hot idea, Ariela");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
@@ -138,7 +138,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence11() {
         facePic.CharacterSpeaks(3,6f);
-        tMPtext.text = ("Maybe we can use our ELEMENTAL powers clear the way to the coffee house...\n...We'll get the band back together one last time!");
+        tMPtext.text = ("Maybe we can use our ELEMENTAL powers to clear the way to the coffee house...\n...We'll get the band back together one last time!");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
