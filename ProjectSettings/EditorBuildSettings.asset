@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/SleepyTimeSplash.unity
     guid: 6e752959f3c2eda4b816797da5f36881
   - enabled: 1
+    path: Assets/_Scenes/Menu.unity
+    guid: aeb91233e1f1ad54e898621cde1007cc
+  - enabled: 1
     path: Assets/_Scenes/Scene 00.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1

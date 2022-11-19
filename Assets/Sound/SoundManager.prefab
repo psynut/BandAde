@@ -74,6 +74,7 @@ MonoBehaviour:
   tracks:
   - {fileID: 0}
   - {fileID: 8300000, guid: 85b3027e3d6522f41b21bd15f2ba8b53, type: 3}
+  - {fileID: 8300000, guid: 2986c9b8dccd8d14498f89353a8de2f6, type: 3}
   - {fileID: 8300000, guid: 881cd0fd307642945abea21328ed1660, type: 3}
   - {fileID: 8300000, guid: 0baa0d2154810ae4b9defde612cb712e, type: 3}
   sceneCommands:
@@ -81,8 +82,10 @@ MonoBehaviour:
     trackForScene: 1
   - playCommand: 1
     trackForScene: 2
-  - playCommand: 0
+  - playCommand: 1
     trackForScene: 3
+  - playCommand: 1
+    trackForScene: 4
 --- !u!82 &3188734388605864156
 AudioSource:
   m_ObjectHideFlags: 0
