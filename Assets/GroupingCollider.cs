@@ -36,8 +36,8 @@ public class GroupingCollider : MonoBehaviour
                     ColePassed = true;
                     break;
                 case "River":
-                    break;
                     RiverPassed = true;
+                    break;
                 default:
                     Debug.LogWarning("default case thrown in " + this.name + " OntTriggerEnter switch statement");
                     break;

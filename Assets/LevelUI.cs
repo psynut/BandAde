@@ -5,6 +5,7 @@ using TMPro;
 
 public class LevelUI : MonoBehaviour {
 
+    private bool startedSequence = false;
     private bool textCompleted = false;     //Message is rendered. Player can now advance
     private bool advance = false;          //Player pressed submit - advanced text;
     private FacePic facePic;
@@ -40,7 +41,10 @@ public class LevelUI : MonoBehaviour {
     public void StartEndSequence(string characterName) {
         facePic.image.enabled = true;
         tMPtext.enabled = true;
-        StartCoroutine(EndSequence01(characterName));
+        if(!startedSequence) {
+            StartCoroutine(EndSequence01(characterName));
+            startedSequence = true;
+        }
     }
 
     IEnumerator EndSequence01(string characterName) {

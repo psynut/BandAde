@@ -19,10 +19,14 @@ public class CharacterTrain : MonoBehaviour
 
     private Vector3 controllerVector3 = Vector3.zero;
 
+    private WinCollider winCollider;
+
     // Start is called before the first frame update
 
     void Awake() {
         lastMovements = new List<Vector3> { Vector3.zero,Vector3.zero,Vector3.zero, Vector3.zero };
+        winCollider = FindObjectOfType<WinCollider>();
+        winCollider.levelComplete.AddListener(Disable);
     }
 
     void Start()
@@ -156,4 +160,9 @@ public class CharacterTrain : MonoBehaviour
     public void UsePower() {
         characters[0].GetComponent<HasPower>().UsePower();
     }
+
+    public void Disable(string Unnecessary) {
+        Destroy(this);
+    }
+
 }
