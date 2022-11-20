@@ -37,17 +37,20 @@ public class GroupingCollider : MonoBehaviour
                     break;
                 case "River":
                     break;
-                    AdamPassed = true;
+                    RiverPassed = true;
                 default:
                     Debug.LogWarning("default case thrown in " + this.name + " OntTriggerEnter switch statement");
                     break;
             }
         }
-        if(AdamPassed && ArianaPassed && ColePassed && AdamPassed) {
+        if(AdamPassed && ArianaPassed && ColePassed && RiverPassed) {
             GameObject m_CharController = FindObjectOfType<CharController>().gameObject;
             Destroy(m_CharController);
             GameObject m_charTrain = Instantiate(characterTrain,transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            GroupingCollider[] groupingColliders = FindObjectsOfType<GroupingCollider>();
+            foreach(GroupingCollider gColllider in groupingColliders) {
+                Destroy(gColllider.gameObject);
+            }
         }
 
     }

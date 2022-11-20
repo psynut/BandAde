@@ -50,7 +50,7 @@ public class MenuDialogue : MonoBehaviour
     }
     IEnumerator EndSequence02() {
         facePic.CharacterSpeaks(0,5f);
-        tMPtext.text = ("That was crazy storm last night. \nI'm still stuck at home. Feels like when I use to be grounded.\nWhat's going on Cole?");
+        tMPtext.text = ("That was a crazy storm last night. \nI'm still stuck at home. Feels like when I use to be grounded.\nWhat's going on Cole?");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;

@@ -7,11 +7,13 @@ using TMPro;
 public class MenuUI : MonoBehaviour
 {
     public GameObject menuPanel;
+    public GameObject instructionPanelA, instructionPanelB, creditsPanel;
     public TMP_Text title;
     public TMP_Text[] menuItems;
     public Slider[] sliders;
 
     private ArrayList sliderImages;
+    private MenuDialogue menuDialogue;
 
     private void Awake() {
         sliderImages = new ArrayList();
@@ -29,7 +31,14 @@ public class MenuUI : MonoBehaviour
             image.color = new Color32(color.r,color.g,color.b,0);
             Debug.Log(image.name + " " + image.color.a);
         }
+        instructionPanelA.SetActive(false);
+        instructionPanelB.SetActive(false);
+        creditsPanel.SetActive(false);
        
+    }
+
+    private void Start() {
+        menuDialogue = GetComponentInChildren<MenuDialogue>();
     }
 
     public void MenuPanelOff() {
@@ -74,4 +83,28 @@ public class MenuUI : MonoBehaviour
 
     }
 
+    public void StartScene() {
+        menuDialogue.StartSeqeunce();
+    }
+
+    public void DisplayInstructionsPanelAorB(bool aB) {
+            instructionPanelB.SetActive(!aB);
+            instructionPanelA.SetActive(aB);
+    }
+
+    public void InstructionsDisplay(bool onOff) {
+        menuPanel.SetActive(!onOff);
+        if(onOff) {
+            DisplayInstructionsPanelAorB(onOff);
+        } else {
+            instructionPanelB.SetActive(onOff);
+            instructionPanelA.SetActive(onOff);
+        }
+        
+    }
+
+    public void DisplayCreditsPanel(bool onOff) {
+        menuPanel.SetActive(!onOff);
+        creditsPanel.SetActive(onOff);
+    }
 }
