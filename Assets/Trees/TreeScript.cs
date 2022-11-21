@@ -61,7 +61,7 @@ public class TreeScript : MonoBehaviour
         if(!alive && powerUsed == Powers.power.Fire) {
             CatchFire();
         } else if(!alive && powerUsed == Powers.power.Air) {
-            Debug.Log("CharacterPowered recognized to invoke KnockedDown()");
+            Debug.Log("CharacterPowered recognized to invoke KnockedOver()");
             KnockOver();
         } else if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)) {
             Destroy(gameObject);
@@ -85,9 +85,13 @@ public class TreeScript : MonoBehaviour
     }
 
     public void KnockOver() {
+        bool knockedTreeOver = false;
         Landform[] rivers = FindNeighborRiver();
+        Debug.Log("rivers Length: " + rivers.Length);
         for(int i=0; i<rivers.Length; i++) {
             if(rivers[i] != null){
+                knockedTreeOver = true;
+                Debug.Log(rivers[i].transform.position);
                 GameObject deadTreePrefab = GameObject.Instantiate(downedTree,rivers[i].transform.position,Quaternion.Euler(0,90f * i,0),rivers[i].transform);
                 deadTreePrefab.name = "Downed Tree Bridge";
                 Debug.Log("Placing downed tree @ " + deadTreePrefab + " Parent is at " + deadTreePrefab.transform.parent.position);
@@ -95,7 +99,9 @@ public class TreeScript : MonoBehaviour
                 Destroy(rivers[i].GetComponent<Landform>()); //less sure if this is needed or problematic.
             }
         }
-        Destroy(gameObject);
+        if(knockedTreeOver) {
+            Destroy(gameObject);
+        }
     }
 
     private TreeScript[] FindNeighborDeadTrees() {
@@ -136,13 +142,13 @@ public class TreeScript : MonoBehaviour
         Landform[] rivers = new Landform[4];
         LayerMask layerMask = LayerMask.GetMask("Landforms");
         for(int i = 0; i < cardinalDirection.Length; i++) {
-            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit,treeSizes[i % 2]+1,layerMask.value);
+            Physics.Raycast(transform.position,cardinalDirection[i],out RaycastHit hit,treeSizes[i % 2],layerMask.value);
             if(hit.transform) {
                 Landform m_landform= hit.transform.GetComponent<Landform>();
-                Debug.Log("Raycast hit landform @ " + transform.position);
+                Debug.Log("Raycast hit landform @ " + m_landform.transform.name);
                 if(m_landform != null && hit.transform.GetComponent<Landform>().myLandFormType == Landform.LandFormType.River) {
                    rivers[i] = hit.transform.GetComponent<Landform>();
-                    Debug.Log("Raycast hit river @ " + transform.position);
+                    Debug.Log("Raycast hit river @ " + hit.transform.position);
                 }
             }
         }
