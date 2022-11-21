@@ -63,7 +63,8 @@ public class TreeScript : MonoBehaviour
         } else if(!alive && powerUsed == Powers.power.Air) {
             Debug.Log("CharacterPowered recognized to invoke KnockedOver()");
             KnockOver();
-        } else if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)) {
+        }
+        if(onFire && (powerUsed == Powers.power.Water || powerUsed == Powers.power.Air)) {
             Destroy(gameObject);
         }
             
