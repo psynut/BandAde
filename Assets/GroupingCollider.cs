@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GroupingCollider : MonoBehaviour
 {
-    public GameObject characterTrain; 
+    public GameObject characterTrain;
+    public GameObject togetherParticleSystem;
     private int characterCount = 0;
     static bool AdamPassed = false;
     static bool ArianaPassed = false;
@@ -47,6 +48,7 @@ public class GroupingCollider : MonoBehaviour
             GameObject m_CharController = FindObjectOfType<CharController>().gameObject;
             Destroy(m_CharController);
             GameObject m_charTrain = Instantiate(characterTrain,transform.position, Quaternion.identity);
+            GameObject m_particleSystem = Instantiate(togetherParticleSystem,transform.position + new Vector3(-1.02f,2.4f,0.34134f),Quaternion.Euler(0,-14.69f,48.41f));
             GroupingCollider[] groupingColliders = FindObjectsOfType<GroupingCollider>();
             foreach(GroupingCollider gColllider in groupingColliders) {
                 Destroy(gColllider.gameObject);
