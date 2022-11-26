@@ -51,3 +51,5 @@ MonoBehaviour:
     delayTime: 0
   - command: 1
     delayTime: 0
+  - command: 1
+    delayTime: 0
