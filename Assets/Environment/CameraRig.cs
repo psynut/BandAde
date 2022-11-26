@@ -17,4 +17,8 @@ public class CameraRig : MonoBehaviour
         }
         cameras[cameraNumber].enabled = true;
     }
+
+    public void EndScene() {
+        FindObjectOfType<SceneLoader>().LoadScene(1);
+    }
 }
