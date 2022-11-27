@@ -19,7 +19,7 @@ Reliable, solid and steady. Doesn't move fast, but will assuradly move forward
 Quiet, a little hard to contain. Sometimes distractible. Always cool.
 
 
-~~### Erref~~
+~~Erref~~
 ~~Stupid almost unnecessary side kick, cheerleader, comic relief~~
 ~~They will hide if there's trouble and talk smack once trouble is averted.~~
 ~~Provides tutorial information~~
@@ -69,9 +69,9 @@ UI menu at start of the game with credits.
 
 
 v0.1 built 11/26/22
-##To Do List / Whishlist (11/26/22):
-Fix camera to better track player train in second half of map play.
-Fix solo of "Cliche Theme."
-UI to better help players understand assigned keys and keep track of who is currently active player.
-Add monster mechanic. (And mechanic for train to restart at Hospital.)
+## To Do List / Whishlist (11/26/22)  
+Fix camera to better track player train in second half of map play.  
+Fix solo of "Cliche Theme."  
+UI to better help players understand assigned keys and keep track of who is currently active player.  
+Add monster mechanic. (And mechanic for train to restart at Hospital.)  
 Change particle system to appear where effect is done rather than from characters.
