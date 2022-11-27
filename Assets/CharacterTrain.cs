@@ -19,6 +19,8 @@ public class CharacterTrain : MonoBehaviour
 
     private Vector3 controllerVector3 = Vector3.zero;
 
+    private TrainCamera trainCamera;
+
     private WinCollider winCollider;
 
     // Start is called before the first frame update
@@ -31,7 +33,12 @@ public class CharacterTrain : MonoBehaviour
 
     void Start()
     {
+        trainCamera = GetComponentInChildren<TrainCamera>();
         ReceiveCharacters(transform.position);
+        foreach(Movement m_movement in characters) {
+            m_movement.GetComponentInChildren<Camera>().enabled = false;
+        }
+        trainCamera.AcceptAssignment(characters[0].lerpCurve,characters[0].movementSpeed,characters[0].unitOfMovement);
         StartCoroutine("CheckControls");
     }
 
@@ -45,6 +52,7 @@ public class CharacterTrain : MonoBehaviour
             movement.transform.position = vec3;
             movement.moving = false;
         }
+        trainCamera.transform.position = vec3 + (trainCamera.transform.localPosition);
     }
 
     public IEnumerator CheckControls() {
@@ -99,6 +107,7 @@ public class CharacterTrain : MonoBehaviour
                 for(int i = 0; i <= characters.Count - 1; i++) {
                     characters[i].LerpMovement(lastMovements[lastMovements.Count - 1 - i]);
                 }
+                trainCamera.LerpMovement(vec3);
             } else {
                 characters[0].RotateModel(vec3);
             }

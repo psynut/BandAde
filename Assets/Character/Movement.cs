@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class Movement : MonoBehaviour
 {
-    public float movementSpeed = 3;
-    public float unitOfMovement = 5;
+    public float movementSpeed = 0.25f;
+    public float unitOfMovement = 5f;
     [SerializeField]
     public AnimationCurve lerpCurve;
     public Transform characterNest;

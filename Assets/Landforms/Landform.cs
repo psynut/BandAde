@@ -131,7 +131,7 @@ public class Landform : MonoBehaviour {
         try {
             groundBlock.GetComponent<MeshRenderer>().enabled = onOff;
         } catch(System.NullReferenceException ex) {
-            Debug.LogWarning("No Ground Black Found in Landform.Place(LandFormType) at " + transform.position);
+            Debug.LogWarning("No Ground Block Found in Landform.Place(LandFormType) at " + transform.position + "\n" + ex.Message);
         }
     }
 }

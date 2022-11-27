@@ -8,7 +8,6 @@ public class GroupingCollider : MonoBehaviour
     public GameObject characterTrain;
     public GameObject togetherParticleSystem;
     public UnityEvent middleCheckPointCleared;
-    private int characterCount = 0;
     static bool AdamPassed = false;
     static bool ArianaPassed = false;
     static bool ColePassed = false;
