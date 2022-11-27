@@ -11,6 +11,8 @@ public class LevelUI : MonoBehaviour {
     private FacePic facePic;
     private TMP_Text tMPtext;
 
+    private GroupingCollider groupingCollider; //Will pass itself to this LevelUI script to be ivoked when LevelUI completes MiddleSequences.
+
     private void Awake() {
         facePic = GetComponentInChildren<FacePic>();
         tMPtext = GetComponentInChildren<TMP_Text>();
@@ -37,6 +39,80 @@ public class LevelUI : MonoBehaviour {
             advance = true;
         }
     }
+
+    public void StartMiddleSequence(GroupingCollider m_groupingCollider) {
+        groupingCollider = m_groupingCollider;
+        facePic.image.enabled = true;
+        tMPtext.enabled = true;
+        if(!startedSequence) {
+            StartCoroutine(MiddleSequence01());
+            startedSequence = true;
+        }
+    }
+
+    IEnumerator MiddleSequence01() {
+        facePic.CharacterSpeaks(3,6f);
+        tMPtext.text = ("We're on our way! Now that we've got the general rhythm, let's work together!");
+        StartCoroutine(DelayTextCompleted());
+        yield return new WaitUntil(() => advance);
+        textCompleted = false;
+        advance = false;
+        facePic.StopAllCoroutines();
+        StartCoroutine(MiddleSequence02());
+    }
+
+    IEnumerator MiddleSequence02() {
+        facePic.CharacterSpeaks(1,5f);
+        tMPtext.text = ("We'll definitely breeze through if we stick togeter!");
+        StartCoroutine(DelayTextCompleted());
+        yield return new WaitUntil(() => advance);
+        textCompleted = false;
+        advance = false;
+        facePic.StopAllCoroutines();
+        StartCoroutine(MiddleSequence03());
+    }
+
+    IEnumerator MiddleSequence03() {
+        facePic.CharacterSpeaks(2,5f);
+        tMPtext.text = ("This storm really tore the place up! How in the blazes did it get so so jumbled?");
+        StartCoroutine(DelayTextCompleted());
+        yield return new WaitUntil(() => advance);
+        textCompleted = false;
+        advance = false;
+        facePic.StopAllCoroutines();
+        StartCoroutine(MiddleSequence04());
+    }
+
+    IEnumerator MiddleSequence04() {
+        facePic.CharacterSpeaks(0,5f);
+        tMPtext.text = ("This charity concert is gonna be out of this world!");
+        StartCoroutine(DelayTextCompleted());
+        yield return new WaitUntil(() => advance);
+        textCompleted = false;
+        advance = false;
+        facePic.StopAllCoroutines();
+        StartCoroutine(MiddleSequence05());
+    }
+
+    IEnumerator MiddleSequence05() {
+        facePic.CharacterSpeaks(1,6f);
+        tMPtext.text = ("With a little heart and our four elemental powers combined, I'm sure we can handle it!");
+        StartCoroutine(DelayTextCompleted());
+        yield return new WaitUntil(() => advance);
+        textCompleted = false;
+        advance = false;
+        facePic.StopAllCoroutines();
+        CloseMiddleSequence();
+    }
+
+    private void CloseMiddleSequence() {
+        facePic.image.enabled = false;
+        tMPtext.enabled = false;
+        startedSequence = false;
+        textCompleted = false;
+        groupingCollider.PlaceCharacterTrain();
+    }
+
 
     public void StartEndSequence(string characterName) {
         facePic.image.enabled = true;

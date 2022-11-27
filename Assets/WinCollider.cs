@@ -25,10 +25,8 @@ public class WinCollider : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider m_collider) {
-        Debug.Log("Collision");
         if(m_collider.transform.name != null) {
             levelComplete.Invoke(m_collider.transform.name);
-            Debug.Log("collision with " + m_collider.transform.name);
         }
     }
 }

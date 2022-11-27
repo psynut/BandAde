@@ -91,9 +91,6 @@ public class CharacterTrain : MonoBehaviour
             isObstructed = characters[0].isObstructed(vec3);
             for(int i = 1; i <= characters.Count - 1 && !isObstructed; i++) {
                 isObstructed = characters[i].isObstructed(lastMovements[lastMovements.Count - i]);
-                if(isObstructed) {
-                    Debug.Log(characters[i].name + " " + isObstructed);
-                }
             }
 
             if(!isMoving && !isObstructed && !swappingCharacters && !TrainIsObstructed(vec3)) {
@@ -140,10 +137,7 @@ public class CharacterTrain : MonoBehaviour
         Movement newLeadMovement = characters[newLead];
         characters[newLead] = characters[0];
         characters[0] = newLeadMovement;
-            Debug.Log("0: " + characters[0].name +" 1:"+ characters[1].name+" 2:"+ characters[2].name +" 3:" + characters[3].name);
-        Debug.Log("lastMovements: "+ lastMovements[3] +", " + lastMovements[2] +", " +lastMovements[1] +", " +lastMovements[0]);
         swappingCharacters = false;
-
     }
 
     public bool TrainIsObstructed(Vector3 vec3) {

@@ -19,14 +19,14 @@ Reliable, solid and steady. Doesn't move fast, but will assuradly move forward
 Quiet, a little hard to contain. Sometimes distractible. Always cool.
 
 
-### Erref
-Stupid almost unnecessary side kick, cheerleader, comic relief
-They will hide if there's trouble and talk smack once trouble is averted.
-Provides tutorial information
+~~### Erref~~
+~~Stupid almost unnecessary side kick, cheerleader, comic relief~~
+~~They will hide if there's trouble and talk smack once trouble is averted.~~
+~~Provides tutorial information~~
 
 ## Level/Environment Design
 
-Map of the town with four homes toward the south (bottom), a hospital in the middle (a middle point and place to rejoin if there are monsters and "deaths")
+Map of the town with four home spaces toward the south (bottom), a hospital in the middle (a middle point and place to join characters as a team. (To possibly add monsters after the midway point that take HP.)
 The coffee house is to the north (top) of the map.
 ~~Map of the town from the 4 characters homes and the coffee shop in the middle.~~
 
@@ -66,3 +66,12 @@ UI menu at start of the game with credits.
 (If time a volume controls on pause menu and menu button)
 
 (If time see the face of character that's being controlled.)
+
+
+v0.1 built 11/26/22
+##To Do List / Whishlist (11/26/22):
+Fix camera to better track player train in second half of map play.
+Fix solo of "Cliche Theme."
+UI to better help players understand assigned keys and keep track of who is currently active player.
+Add monster mechanic. (And mechanic for train to restart at Hospital.)
+Change particle system to appear where effect is done rather than from characters.
