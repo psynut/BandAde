@@ -127,6 +127,7 @@ public class LevelUI : MonoBehaviour {
         int characterInt = 0;
         switch(characterName) {
             case "Adam":
+                characterInt = 0;
                 break;
             case "Ariana":
                 characterInt = 1;
@@ -135,7 +136,7 @@ public class LevelUI : MonoBehaviour {
                 characterInt = 2;
                 break;
             case "River":
-                characterInt = 4;
+                characterInt = 3;
                 break;
             default:
                 Debug.LogWarning("Unkown character string in " + this.name + "LevelUI.StartEndSequence()");
