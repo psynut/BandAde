@@ -61,7 +61,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence03() {
         facePic.CharacterSpeaks(2,7f);
-        tMPtext.text = ("Ariela and I stopped by Little Guy Coffee House yesterday. \nThe bank's shutting it down! We gotta do something!");
+        tMPtext.text = ("Ariana and I stopped by Little Guy Coffee House yesterday. \nThe bank's shutting it down! We gotta do something!");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;
@@ -127,7 +127,7 @@ public class MenuDialogue : MonoBehaviour
 
     IEnumerator EndSequence10() {
         facePic.CharacterSpeaks(2,6f);
-        tMPtext.text = ("That's a hot idea, Ariela");
+        tMPtext.text = ("That's a hot idea, Ariana");
         StartCoroutine(DelayTextCompleted());
         yield return new WaitUntil(() => advance);
         textCompleted = false;

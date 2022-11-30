@@ -69,7 +69,8 @@ UI menu at start of the game with credits.
 
 
 v0.1 built 11/26/22
-v0.1.0 built 11/29/22
+v0.1.1 built 11/29/22
+v0.1.2 built 11/30/22
 
 ## To Do List / Whishlist (11/26/22)  
 ~~Fix camera to better track player train in second half of map play.~~  
